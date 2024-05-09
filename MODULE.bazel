@@ -1,0 +1,9 @@
+bazel_dep(name = "rules_jvm_external", version = "6.1")
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "com.google.cloud:google-cloud-storage:2.38.0",
+    ],
+    lock_file = "//:maven_install.json",
+)
+use_repo(maven, "maven", "unpinned_maven")
